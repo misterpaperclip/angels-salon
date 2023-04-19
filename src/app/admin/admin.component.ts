@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { ReservationService } from '../reservation.service';
+import { Reservation } from '../reservation.model';
+
+const RESERVATIONS_KEY = 'reservations';
 
 @Component({
   selector: 'app-admin',
@@ -8,12 +12,13 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
+  reservations: Reservation[] = [];
   username!: string;
   password!: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public app: AppComponent
+    public reservationService: ReservationService
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -21,7 +26,12 @@ export class AdminComponent implements OnInit {
       this.password = params['password'];
 
       if (this.username === 'admin' && this.password === '123123') {
-      } else this.router.navigate(['home']);
+        this.reservationService.reservations$.subscribe((reservations) => {
+          this.reservations = reservations;
+        });
+      } else {
+        this.router.navigate(['home']);
+      }
     });
   }
 }

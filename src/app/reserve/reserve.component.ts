@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppComponent } from '../app.component';
+import { ReservationService } from '../reservation.service';
 
 @Component({
   selector: 'app-reserve',
@@ -13,7 +13,7 @@ export class ReserveComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private app: AppComponent
+    private reservationService: ReservationService
   ) {
     this.serviceType = '';
     this.serviceTypeText = '';
@@ -41,7 +41,6 @@ export class ReserveComponent implements OnInit {
         case 'wax':
           this.serviceTypeText = 'Waxing';
           break;
-
         default:
           this.router.navigate(['services']);
           break;
@@ -66,34 +65,18 @@ export class ReserveComponent implements OnInit {
           `${reserveNametext}: ${reserveAddresstext}: ${reserveDatetext}: ${reserveEmailtext}`
         );
 
-        this.enterReservation(
-          reserveType,
-          reserveNametext,
-          reserveAddresstext,
-          reserveDatetext,
-          reserveEmailtext
-        );
+        this.reservationService.enterReservation({
+          type: reserveType,
+          name: reserveNametext,
+          address: reserveAddresstext,
+          date: reserveDatetext,
+          email: reserveEmailtext,
+        });
 
         alert('Reservation processed! Thank you for your patronage. :>');
 
         this.router.navigate(['home']);
       });
-    });
-  }
-
-  enterReservation(
-    type: string,
-    name: string,
-    address: string,
-    date: string,
-    email: string
-  ): void {
-    this.app.reservationRecords.push({
-      type,
-      name,
-      address,
-      date,
-      email,
     });
   }
 }

@@ -11,8 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngIf="app.reservationRecords.length; else noData">
-        <tr *ngFor="let reservation of app.reservationRecords">
+      <ng-container *ngIf="reservations.length; else noData">
+        <tr *ngFor="let reservation of reservations">
           <td>{{ reservation.type }}</td>
           <td>{{ reservation.name }}</td>
           <td>{{ reservation.address }}</td>
