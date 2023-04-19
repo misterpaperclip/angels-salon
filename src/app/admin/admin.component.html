@@ -1,0 +1,30 @@
+<div class="bg-image"></div>
+<div class="bg-content">
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="app.reservationRecords.length; else noData">
+        <tr *ngFor="let reservation of app.reservationRecords">
+          <td>{{ reservation.type }}</td>
+          <td>{{ reservation.name }}</td>
+          <td>{{ reservation.address }}</td>
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.email }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <ng-template #noData>
+    <tr>
+      <td colspan="5" style="text-align: center">No data available.</td>
+    </tr>
+  </ng-template>
+</div>

@@ -27,7 +27,9 @@ app-homepage,
 app-services,
 app-contact,
 app-about,
-app-login {
+app-login,
+app-reserve,
+app-admin {
   flex-grow: 1;
   padding: 20px;
 
@@ -40,7 +42,7 @@ app-login {
 }
 .bg-image {
   /* The image used */
-  background-image: url(assets/img/asset2.jpg);
+  background-image: url(assets/img/asset-bg.jpg);
 
   /* Add the blur effect */
   filter: blur(8px);
@@ -65,7 +67,7 @@ app-login {
   font-weight: bold;
   border: 3px solid #f1f1f1;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -76,6 +78,24 @@ app-login {
 
 app-about .bg-content {
   width: 30%;
+}
+app-reserve .bg-content,
+app-login .bg-content {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  & input {
+    border: 3px solid #f1f1f1;
+    padding: 5px;
+    margin: 5px;
+  }
+  & button {
+    border: 3px solid #f1f1f1;
+    padding: 7px;
+    margin: 7px;
+    font-weight: 600;
+    cursor: pointer;
+  }
 }
 
 nav ul {
@@ -97,23 +117,6 @@ nav a {
 
 nav a:hover {
   color: #ffcc00;
-}
-
-#hero {
-  background-image: url("https://placeimg.com/800/600/arch");
-  background-size: cover;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-  text-align: center;
-}
-
-#hero h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
 }
 
 .btn {
@@ -180,6 +183,10 @@ footer p {
   padding: 30px;
   width: 30%;
   text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  user-select: none;
 }
 
 .service-icon {
@@ -190,13 +197,40 @@ footer p {
 .service-box h3 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: gray;
+  color: black;
+  outline: 0.1px solid whitesmoke;
+  text-shadow: 2px 2px whitesmoke;
+  backdrop-filter: blur(10px);
 }
 
 .service-box p {
   font-size: 16px;
   line-height: 1.5;
-  color: #888;
+  color: black;
+  outline: 0.1px solid whitesmoke;
+  text-shadow: 2px 2px whitesmoke;
+  backdrop-filter: blur(10px);
+}
+
+.service- {
+  &color {
+    background-image: url(assets/img/service-color.jpg);
+  }
+  &haircut {
+    background-image: url(assets/img/service-haircut.jpg);
+  }
+  &pedicure {
+    background-image: url(assets/img/service-pedicure.jpg);
+  }
+  &therapy {
+    background-image: url(assets/img/service-therapy.jpg);
+  }
+  &treatment {
+    background-image: url(assets/img/service-treatment.jpg);
+  }
+  &wax {
+    background-image: url(assets/img/service-wax.jpg);
+  }
 }
 
 @media screen and (max-width: 768px) {

@@ -9,6 +9,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     ServicesComponent,
     LoginComponent,
+    ReserveComponent,
+    AdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
